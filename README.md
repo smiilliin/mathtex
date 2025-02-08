@@ -82,51 +82,106 @@ tex.add_answer_key([1, 1, 3, 4, 5, 2, 1, 3, 3, 2, 2, 5, 4, 2, 3, 3, 4, 4, 1, 2])
 tex.write("test.tex")
 ```
 [Result tex file(test.tex)](./test.pdf)
-```tex
-\documentclass{article}
-\usepackage{tasks}
-\usepackage{kotex}
-\usepackage{datetime2}
-\usepackage{multicol}
-\usepackage{amsmath}
-\usepackage[a4paper, margin=1in]{geometry}
-\title{Calculus Problem Test}
-\author{smiilliin}
-\date{\today}\begin{document}
-\maketitle\begin{multicols*}{2}
-\noindent
-\begin{minipage}{\linewidth}
-1. Solve \[ \int x^2 dx \]\begin{tasks}[label=\textcircled{\scriptsize\arabic*},label-width=13pt](3)\task \( \frac{x^3}{3} + C \)\task \( \frac{x^2}{2} + C \)\task \( \frac{x^3}{2} + C \)\task \( x^2 + C \)\end{tasks}
-\end{minipage}
-\bigskip
 
-\noindent
-\begin{minipage}{\linewidth}
-2. Solve \[ \int 4x^3 dx \]\begin{tasks}[label=\textcircled{\scriptsize\arabic*},label-width=13pt](3)\task \( {x^4} + C \)\task \( \frac{1}{x} + C \)\task \( {x^2} + C \)\task \( x^5 + C \)\end{tasks}
-\end{minipage}
-\bigskip
+```py
+from mathtex import MathTex, Problem
+import random
 
-\newpage
-\section*{Answer Key}
-\noindent\begin{minipage}{\linewidth}
+tex = MathTex("삼각함수 단순 미적분 100문제", "이지환 - smiilliin", "정답")
 
-1. \textcircled{1} \textcircled{1} \textcircled{3} \textcircled{4} \textcircled{5} 
-\end{minipage}
+question_d = [
+    "\\((\\sin x)'\\)",
+    "\\((\\cos x)'\\)",
+    "\\((\\tan x)'\\)",
+    "\\((\\csc x)'\\)",
+    "\\((\\sec x)'\\)",
+    "\\((\\cot x)'\\)",
+    "\\(-(\\sin x)'\\)",
+    "\\(-(\\cos x)'\\)",
+    "\\(-(\\tan x)'\\)",
+    "\\(-(\\csc x)'\\)",
+    "\\(-(\\sec x)'\\)",
+    "\\(-(\\cot x)'\\)",
+]
+answer_d = [
+    "\\(\\cos x\\)",
+    "\\(-\\sin x\\)",
+    "\\(\\sec^2 x\\)",
+    "\\(-\\csc x \\cot x\\)",
+    "\\(\\sec x \\tan x\\)",
+    "\\(-\\csc^2 x\\)",
+    "\\(-\\cos x\\)",
+    "\\(\\sin x\\)",
+    "\\(-\\sec^2 x\\)",
+    "\\(\\csc x \\cot x\\)",
+    "\\(-\\sec x \\tan x\\)",
+    "\\(\\csc^2 x\\)",
+]
+wtf_answer_d = [
+    "\\(\\tan x\\)",
+    "\\(\\sec x \\cot x\\)",
+    "\\(\\sec x \\sin x\\)",
+    "\\(\\sec x \\cos x\\)",
+    "\\(\\cos^2 x\\)",
+    "\\(-\\csc x \\sin x\\)",
+    "\\(-\\csc x \\cos x\\)",
+    "\\(-\\csc x \\tan x\\)",
+    "\\(-\\sin^2 x\\)",
+    "\\(\\cot^2 x\\)",
+]
 
-\noindent\begin{minipage}{\linewidth}
+question_i = [
+    "\\( \\int \\cos x dx\\) (C 생략)",
+    "\\( \\int -\\sin x dx\\) (C 생략)",
+    "\\( \\int \\sec^2 x dx\\) (C 생략)",
+    "\\( \\int -\\csc x \\cot x dx\\) (C 생략)",
+    "\\( \\int \\sec x \\tan x dx\\) (C 생략)",
+    "\\( \\int -\\csc^2 xdx\\) (C 생략)",
+    "\\( \\int -\\cos x dx\\) (C 생략)",
+    "\\( \\int \\sin x dx\\) (C 생략)",
+    "\\( \\int -\\sec^2 dx\\) (C 생략)",
+    "\\( \\int \\csc x \\cot x dx\\) (C 생략)",
+    "\\( \\int -\\sec x \\tan x dx\\) (C 생략)",
+    "\\( \\int \\csc^2 x dx\\) (C 생략)",
+]
+answer_i = [
+    "\\(\\sin x\\)",
+    "\\(\\cos x\\)",
+    "\\(\\tan x\\)",
+    "\\(\\csc x\\)",
+    "\\(\\sec x\\)",
+    "\\(\\cot x \\)",
+    "\\(-\\sin x\\)",
+    "\\(-\\cos x\\)",
+    "\\(-\\tan x\\)",
+    "\\(-\\csc x\\)",
+    "\\(-\\sec x\\)",
+    "\\(-\\cot x \\)",
+]
 
-6. \textcircled{2} \textcircled{1} \textcircled{3} \textcircled{3} \textcircled{2} 
-\end{minipage}
+N = 100
+for i in range(100):
+    if random.random() > 0.5:
+        k = random.randint(0, len(question_d) - 1)
+        question = question_d[k]
+        answer = answer_d[k]
+        picked_answers = random.sample(
+            answer_d[:k] + answer_d[k + 1 :] + wtf_answer_d, k=5
+        )
+        n = random.randint(0, 4)
+        picked_answers[n] = answer
+        tex.add_problem(Problem(question, picked_answers))
+    else:
+        k = random.randint(0, len(question_i) - 1)
+        question = question_i[k]
+        answer = answer_i[k]
+        picked_answers = random.sample(answer_i[:k] + answer_i[k + 1 :], k=5)
+        n = random.randint(0, 4)
+        picked_answers[n] = answer
+        tex.add_problem(Problem(question, picked_answers))
 
-\noindent\begin{minipage}{\linewidth}
+    tex.add_answer_key(n)
 
-11. \textcircled{2} \textcircled{5} \textcircled{4} \textcircled{2} \textcircled{3} 
-\end{minipage}
-
-\noindent\begin{minipage}{\linewidth}
-
-16. \textcircled{3} \textcircled{4} \textcircled{4} \textcircled{1} \textcircled{2} 
-
-\end{minipage}\end{multicols*}
-\end{document}
+tex.write("trig_deriv_int_test.tex")
 ```
+[Result tex file(trig_deriv_int_test.tex)](./trig_deriv_int_test.pdf)

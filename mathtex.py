@@ -44,7 +44,7 @@ class MathTex:
             f.write("\\documentclass{article}\n")
             for package in self.packages:
                 f.write(f"\\usepackage{{{package}}}\n")
-            f.write(f"\\usepackage[a4paper, margin=1in]{{geometry}}\n")
+            f.write(f"\\usepackage[a4paper, margin=0.8in]{{geometry}}\n")
             f.write(
                 f"\\title{{{self.title}}}\n\\author{{{self.author}}}\n\\date{{\\today}}"
             )
