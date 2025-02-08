@@ -131,18 +131,18 @@ wtf_answer_d = [
 ]
 
 question_i = [
-    "\\( \\int \\cos x \, dx\\)",
-    "\\( \\int -\\sin x \, dx\\)",
-    "\\( \\int \\sec^2 x \, dx\\)",
-    "\\( \\int -\\csc x \\cot x \, dx\\)",
-    "\\( \\int \\sec x \\tan x \, dx\\)",
-    "\\( \\int -\\csc^2 x\, dx\\)",
-    "\\( \\int -\\cos x \, dx\\)",
-    "\\( \\int \\sin x \, dx\\)",
-    "\\( \\int -\\sec^2 \, dx\\)",
-    "\\( \\int \\csc x \\cot x \, dx\\)",
-    "\\( \\int -\\sec x \\tan x \, dx\\)",
-    "\\( \\int \\csc^2 x \, dx\\)",
+    "\\( \\int \\cos x \\, dx\\)",
+    "\\( \\int -\\sin x \\, dx\\)",
+    "\\( \\int \\sec^2 x \\, dx\\)",
+    "\\( \\int -\\csc x \\cot x \\, dx\\)",
+    "\\( \\int \\sec x \\tan x \\, dx\\)",
+    "\\( \\int -\\csc^2 x\\, dx\\)",
+    "\\( \\int -\\cos x \\, dx\\)",
+    "\\( \\int \\sin x \\, dx\\)",
+    "\\( \\int -\\sec^2 \\, dx\\)",
+    "\\( \\int \\csc x \\cot x \\, dx\\)",
+    "\\( \\int -\\sec x \\tan x \\, dx\\)",
+    "\\( \\int \\csc^2 x \\, dx\\)",
 ]
 answer_i = [
     "\\(\\sin x + C\\)",
