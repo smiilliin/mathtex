@@ -131,18 +131,18 @@ wtf_answer_d = [
 ]
 
 question_i = [
-    "\\( \\int \\cos x dx\\) (C 생략)",
-    "\\( \\int -\\sin x dx\\) (C 생략)",
-    "\\( \\int \\sec^2 x dx\\) (C 생략)",
-    "\\( \\int -\\csc x \\cot x dx\\) (C 생략)",
-    "\\( \\int \\sec x \\tan x dx\\) (C 생략)",
-    "\\( \\int -\\csc^2 xdx\\) (C 생략)",
-    "\\( \\int -\\cos x dx\\) (C 생략)",
-    "\\( \\int \\sin x dx\\) (C 생략)",
-    "\\( \\int -\\sec^2 dx\\) (C 생략)",
-    "\\( \\int \\csc x \\cot x dx\\) (C 생략)",
-    "\\( \\int -\\sec x \\tan x dx\\) (C 생략)",
-    "\\( \\int \\csc^2 x dx\\) (C 생략)",
+    "\\( \\int \\cos x \, dx\\) (C 생략)",
+    "\\( \\int -\\sin x \, dx\\) (C 생략)",
+    "\\( \\int \\sec^2 x \, dx\\) (C 생략)",
+    "\\( \\int -\\csc x \\cot x \, dx\\) (C 생략)",
+    "\\( \\int \\sec x \\tan x \, dx\\) (C 생략)",
+    "\\( \\int -\\csc^2 x\, dx\\) (C 생략)",
+    "\\( \\int -\\cos x \, dx\\) (C 생략)",
+    "\\( \\int \\sin x \, dx\\) (C 생략)",
+    "\\( \\int -\\sec^2 \, dx\\) (C 생략)",
+    "\\( \\int \\csc x \\cot x \, dx\\) (C 생략)",
+    "\\( \\int -\\sec x \\tan x \, dx\\) (C 생략)",
+    "\\( \\int \\csc^2 x \, dx\\) (C 생략)",
 ]
 answer_i = [
     "\\(\\sin x\\)",
