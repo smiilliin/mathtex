@@ -30,6 +30,14 @@ problem class constructing parameters
 | -- | -- | --|
 | Problem prompt| Choices text | Number of choices to place in one line |
 
+### Add answer keys
+add answer keys on new page
+```py
+tex.add_answer_key([1, 1, 3, 4, 5, 2, 1, 3, 3])
+tex.add_answer_key(1)
+tex.add_answer_key(2)
+```
+
 ### Save tex to file
 save tex class to file
 ```py
@@ -41,7 +49,8 @@ example making math test
 ```py
 from mathtex import MathTex, Problem
 
-tex = MathTex("Calculus Problem Test", "smiilliin")
+tex = MathTex("Calculus Problem Test", "smiilliin", "Answer Key")
+
 
 tex.add_problem(
     Problem(
@@ -55,6 +64,7 @@ tex.add_problem(
     )
 )
 
+
 tex.add_problem(
     Problem(
         "Solve \\[ \\int 4x^3 dx \\]",
@@ -62,10 +72,12 @@ tex.add_problem(
             "\\( {x^4} + C \\)",
             "\\( \\frac{1}{x} + C \\)",
             "\\( {x^2} + C \\)",
-            "\\( x^4 + C \\)",
+            "\\( x^5 + C \\)",
         ],
     )
 )
+
+tex.add_answer_key([1, 1, 3, 4, 5, 2, 1, 3, 3, 2, 2, 5, 4, 2, 3, 3, 4, 4, 1, 2])
 
 tex.write("test.tex")
 ```
@@ -90,10 +102,31 @@ tex.write("test.tex")
 
 \noindent
 \begin{minipage}{\linewidth}
-2. Solve \[ \int 4x^3 dx \]\begin{tasks}[label=\textcircled{\scriptsize\arabic*},label-width=13pt](3)\task \( {x^4} + C \)\task \( \frac{1}{x} + C \)\task \( {x^2} + C \)\task \( x^4 + C \)\end{tasks}
+2. Solve \[ \int 4x^3 dx \]\begin{tasks}[label=\textcircled{\scriptsize\arabic*},label-width=13pt](3)\task \( {x^4} + C \)\task \( \frac{1}{x} + C \)\task \( {x^2} + C \)\task \( x^5 + C \)\end{tasks}
 \end{minipage}
 \bigskip
 
-\end{multicols*}
+\newpage
+\section*{Answer Key}
+\noindent\begin{minipage}{\linewidth}
+
+1. \textcircled{1} \textcircled{1} \textcircled{3} \textcircled{4} \textcircled{5} 
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+
+6. \textcircled{2} \textcircled{1} \textcircled{3} \textcircled{3} \textcircled{2} 
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+
+11. \textcircled{2} \textcircled{5} \textcircled{4} \textcircled{2} \textcircled{3} 
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+
+16. \textcircled{3} \textcircled{4} \textcircled{4} \textcircled{1} \textcircled{2} 
+
+\end{minipage}\end{multicols*}
 \end{document}
 ```

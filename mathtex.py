@@ -16,11 +16,13 @@ class Problem:
 
 
 class MathTex:
-    def __init__(self, title, author):
+    def __init__(self, title, author, answer_key_title="Answer Key"):
         self.title = title
         self.author = author
         self.packages = ["tasks", "kotex", "datetime2", "multicol", "amsmath"]
         self.problems = []
+        self.answer_key_title = answer_key_title
+        self.answer_keys = []
 
     def add_package(self, package):
         if isinstance(package, list):
@@ -30,6 +32,12 @@ class MathTex:
 
     def add_problem(self, problem):
         self.problems.append(problem)
+
+    def add_answer_key(self, answer_key):
+        if isinstance(answer_key, list):
+            self.answer_keys.extend(answer_key)
+        else:
+            self.answer_keys.append(answer_key)
 
     def write(self, path):
         with open(path, "w", encoding="utf-8") as f:
@@ -45,5 +53,16 @@ class MathTex:
             for i, problem in enumerate(self.problems):
                 f.write(problem.get_tex(str(i + 1)) + "\n")
                 f.write("\\bigskip\n\n")
+            f.write("\\newpage\n" + f"\\section*{{{self.answer_key_title}}}\n")
+
+            for i, key in enumerate(self.answer_keys):
+                if i % 5 == 0:
+                    if i != 0:
+                        f.write("\n\\end{minipage}\n\n")
+                    f.write("\\noindent\\begin{minipage}{\\linewidth}\n\n")
+                    f.write(f"{i+1}. ")
+                f.write(f"\\textcircled{{{key}}} ")
+            f.write("\n\n\\end{minipage}")
+
             f.write("\\end{multicols*}\n")
             f.write("\\end{document}")
