@@ -61,7 +61,7 @@ class MathTex:
                         f.write("\n\\end{minipage}\n\n")
                     f.write("\\noindent\\begin{minipage}{\\linewidth}\n\n")
                     f.write(f"{i+1}. ")
-                f.write(f"\\textcircled{{{key}}} ")
+                f.write(f"\\textcircled{{{key+1}}} ")
             f.write("\n\n\\end{minipage}")
 
             f.write("\\end{multicols*}\n")
